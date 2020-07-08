@@ -28,7 +28,7 @@
 <meta property="og:description" content="组件通信父组件 &#x3D;&gt; 子组件:属性 props12345&#x2F;&#x2F;childprops: &amp;#123; msg: String &amp;#125;&#x2F;&#x2F;parent&lt;HelloWorld msg &#x3D;&quot;welcome to you&quot;&gt; 引用refs1234&#x2F;&#x2F;parent&lt;HelloWorld msg &#x3D;&quot;welcome to you&quot; ref&#x3D;&quot;children&quot;&gt;this.$re">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2020-07-08T06:10:34.000Z">
-<meta property="article:modified_time" content="2020-07-08T14:15:56.749Z">
+<meta property="article:modified_time" content="2020-07-08T14:58:50.313Z">
 <meta property="article:author" content="Da Huan">
 <meta name="twitter:card" content="summary">
     <meta http-equiv="Cache-control" content="no-cache">
@@ -409,7 +409,7 @@ height:50vh;
     <article class="article-entry">
         <h3 id="组件通信"><a href="#组件通信" class="headerlink" title="组件通信"></a>组件通信</h3><h4 id="父组件-gt-子组件"><a href="#父组件-gt-子组件" class="headerlink" title="父组件 =&gt; 子组件:"></a><strong>父组件 =&gt; 子组件:</strong></h4><h5 id="属性-props"><a href="#属性-props" class="headerlink" title="属性 props"></a>属性 props</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">//child</span><br><span class="line">props: &#123; msg: String &#125;</span><br><span class="line"></span><br><span class="line">//parent</span><br><span class="line">&lt;HelloWorld msg =<span class="string">"welcome to you"</span>&gt;</span><br></pre></td></tr></table></figure>
 <h5 id="引用refs"><a href="#引用refs" class="headerlink" title="引用refs"></a>引用refs</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">//parent</span><br><span class="line"></span><br><span class="line">&lt;HelloWorld msg =<span class="string">"welcome to you"</span> ref=<span class="string">"children"</span>&gt;</span><br><span class="line">this.<span class="variable">$ref</span>.children.xx =  <span class="string">'xxx'</span></span><br></pre></td></tr></table></figure>
-<h4 id="子组件-gt-父组件"><a href="#子组件-gt-父组件" class="headerlink" title="子组件 =&gt; 父组件:"></a><strong>子组件 =&gt; 父组件:</strong></h4><h5 id=""><a href="#" class="headerlink" title=""></a></h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">//child</span><br><span class="line">this.<span class="variable">$emit</span>(<span class="string">'add'</span> , good)</span><br><span class="line"></span><br><span class="line">//parent</span><br><span class="line">&lt;Children @add=<span class="string">"cartAdd(<span class="variable">$event</span>)"</span>/&gt;</span><br></pre></td></tr></table></figure>
+<h4 id="子组件-gt-父组件"><a href="#子组件-gt-父组件" class="headerlink" title="子组件 =&gt; 父组件:"></a><strong>子组件 =&gt; 父组件:</strong></h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">//child</span><br><span class="line">this.<span class="variable">$emit</span>(<span class="string">'add'</span> , good)</span><br><span class="line"></span><br><span class="line">//parent</span><br><span class="line">&lt;Children @add=<span class="string">"cartAdd(<span class="variable">$event</span>)"</span>/&gt;</span><br></pre></td></tr></table></figure>
 <h4 id="兄弟组件，通过共同的祖辈组件"><a href="#兄弟组件，通过共同的祖辈组件" class="headerlink" title="兄弟组件，通过共同的祖辈组件:"></a><strong>兄弟组件，通过共同的祖辈组件:</strong></h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;brother1</span><br><span class="line">this.$parent.$on(&#39;foo&#39; , good)</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;brother2</span><br><span class="line">this.$parent.$emit(&#39;foo&#39;)</span><br></pre></td></tr></table></figure>
 <h4 id="祖先后代之间"><a href="#祖先后代之间" class="headerlink" title="祖先后代之间:"></a><strong>祖先后代之间:</strong></h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;parent</span><br><span class="line">provide() &#123;</span><br><span class="line">    return &#123;foo:&#39;foo&#39;&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;children</span><br><span class="line">inject:[&#39;foo&#39;]</span><br></pre></td></tr></table></figure>
 <h4 id="任意两个组件之间，事件总线或vuex"><a href="#任意两个组件之间，事件总线或vuex" class="headerlink" title="任意两个组件之间，事件总线或vuex:"></a><strong>任意两个组件之间，事件总线或vuex:</strong></h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">class Bus&#123;</span><br><span class="line">constructor()&#123;</span><br><span class="line">    this.callbacks &#x3D; &#123;&#125;</span><br><span class="line">&#125;</span><br><span class="line">$on(name, fn)&#123;</span><br><span class="line">    this.callbacks[name] &#x3D; this.callbacks[name] || []</span><br><span class="line">&#125;</span><br><span class="line">$emit(name, args)&#123;</span><br><span class="line">    if(this.callbacks[name])&#123;</span><br><span class="line">    this.callbacks[name].forEach(cb &#x3D;&gt; &#123;</span><br><span class="line">        cb(args)</span><br><span class="line">    &#125;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line">&#x2F;&#x2F;main.js</span><br><span class="line">vue.prototype.$bus &#x3D; new Bus()</span><br><span class="line">&#x2F;&#x2F;child1</span><br><span class="line">this.$bus.$on(&#39;foo&#39;, handle)</span><br><span class="line">&#x2F;&#x2F;child2</span><br><span class="line">this.$bus.$emit(&#39;foo&#39;)</span><br></pre></td></tr></table></figure>
@@ -429,7 +429,7 @@ height:50vh;
             <p>Author：<a href="http://yoursite.com">Da Huan</a>
             <p>原文链接：<a href="http://yoursite.com/2020/07/08/vue/">http://yoursite.com/2020/07/08/vue/</a>
             <p>发表日期：<a href="http://yoursite.com/2020/07/08/vue/">July 8th 2020, 2:10:34 pm</a>
-            <p>更新日期：<a href="http://yoursite.com/2020/07/08/vue/">July 8th 2020, 10:15:56 pm</a>
+            <p>更新日期：<a href="http://yoursite.com/2020/07/08/vue/">July 8th 2020, 10:58:50 pm</a>
             <p>版权声明：本文采用<a rel="license noopener" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可</p>
         </div>
     
@@ -570,7 +570,7 @@ top:50vh;
         <div class="toc-catalog">
             <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
         </div>
-        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#组件通信"><span class="toc-number">1.</span> <span class="toc-text">组件通信</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#父组件-gt-子组件"><span class="toc-number">1.1.</span> <span class="toc-text">父组件 &#x3D;&gt; 子组件:</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#属性-props"><span class="toc-number">1.1.1.</span> <span class="toc-text">属性 props</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#引用refs"><span class="toc-number">1.1.2.</span> <span class="toc-text">引用refs</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#子组件-gt-父组件"><span class="toc-number">1.2.</span> <span class="toc-text">子组件 &#x3D;&gt; 父组件:</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#"><span class="toc-number">1.2.1.</span> <span class="toc-text"></span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#兄弟组件，通过共同的祖辈组件"><span class="toc-number">1.3.</span> <span class="toc-text">兄弟组件，通过共同的祖辈组件:</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#祖先后代之间"><span class="toc-number">1.4.</span> <span class="toc-text">祖先后代之间:</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#任意两个组件之间，事件总线或vuex"><span class="toc-number">1.5.</span> <span class="toc-text">任意两个组件之间，事件总线或vuex:</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#插槽"><span class="toc-number">2.</span> <span class="toc-text">插槽</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#组件通信"><span class="toc-number">1.</span> <span class="toc-text">组件通信</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#父组件-gt-子组件"><span class="toc-number">1.1.</span> <span class="toc-text">父组件 &#x3D;&gt; 子组件:</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#属性-props"><span class="toc-number">1.1.1.</span> <span class="toc-text">属性 props</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#引用refs"><span class="toc-number">1.1.2.</span> <span class="toc-text">引用refs</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#子组件-gt-父组件"><span class="toc-number">1.2.</span> <span class="toc-text">子组件 &#x3D;&gt; 父组件:</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#兄弟组件，通过共同的祖辈组件"><span class="toc-number">1.3.</span> <span class="toc-text">兄弟组件，通过共同的祖辈组件:</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#祖先后代之间"><span class="toc-number">1.4.</span> <span class="toc-text">祖先后代之间:</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#任意两个组件之间，事件总线或vuex"><span class="toc-number">1.5.</span> <span class="toc-text">任意两个组件之间，事件总线或vuex:</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#插槽"><span class="toc-number">2.</span> <span class="toc-text">插槽</span></a></li></ol>
     </div>
     
     <div class="back-top iconfont-archer">&#xe639;</div>
@@ -583,6 +583,8 @@ top:50vh;
     <div class="sidebar-content sidebar-content-show-archive">
           <div class="sidebar-panel-archives">
     <!-- 在ejs中将archive按照时间排序 -->
+    
+    
     
     
     
@@ -639,20 +641,6 @@ top:50vh;
     
     
     
-    <div class="archive-year"> Invalid date </div>
-    <ul class="year-list">
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href= "/2020/06/16/hello-world/" >Hello World</a>
-        </li>
-    
-    
-    
-    
-    
-        </ul>
-    
     <div class="archive-year"> 2020 </div>
     <ul class="year-list">
     
@@ -674,6 +662,20 @@ top:50vh;
     
         <li class="archive-post-item">
             <span class="archive-post-date">06/16</span><a class="archive-post-title" href= "/2020/06/16/js%E7%9A%84this%E6%80%BB%E7%BB%93/" >this,call,bing的使用总结</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href= "/2020/06/16/hello-world/" >Hello World</a>
         </li>
     
     </div>
